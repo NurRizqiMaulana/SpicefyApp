@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "440028770119",
+    "project_id": "spicefyapp",
+    "storage_bucket": "spicefyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440028770119:android:3a4fb1c5ff5dadd3f9a662",
+        "android_client_info": {
+          "package_name": "com.dicoding.spicefyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoJz9KJ66x7MEZYxDOyao-ONWkeOGhiw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
