@@ -1,13 +1,21 @@
 package com.dicoding.spicefyapp.ui.scan
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ScanViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val _image = MutableLiveData<Bitmap?>()
+    val image: LiveData<Bitmap?> = _image
+
+    init {
+        _image.value = null
     }
-    val text: LiveData<String> = _text
+
+    fun setImage(img: Bitmap?) {
+        _image.value = img
+    }
+
 }

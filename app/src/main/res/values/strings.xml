@@ -11,4 +11,17 @@
     <string name="password">Password\n</string>
     <string name="already_have_an_account">Already have an accounnt?</string>
     <string name="name">Name</string>
+    <string name="preview_title">Gambar Spice</string>
+    <string name="preview_subtitle">Capture Your Spice In Here</string>
+    <string name="batik_image">Gambar Spice</string>
+    <string name="no_picture">Tidak ada gambar</string>
+    <string name="add_photo">Tambah Gambar</string>
+    <string name="process">Preses Gambar</string>
+    <string name="remove_photo">Hapus Gambar</string>
+    <string name="detail_name_title">Spice Name</string>
+    <string name="detail_name_content">-</string>
+    <string name="detail_score_title">Tingkat Akurasi</string>
+    <string name="detail_score_content">-</string>
+    <string name="detail_description_title">Detail Spice</string>
+    <string name="detail_description_content">-</string>
 </resources>
