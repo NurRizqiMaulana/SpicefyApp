@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ import com.dicoding.spicefyapp.model.PredictResponse
 import com.dicoding.spicefyapp.ui.camera.CameraActivity
 import com.dicoding.spicefyapp.ui.camera.CropImageActivity
 import com.dicoding.spicefyapp.ui.detail.DetailActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
@@ -97,8 +99,12 @@ class ScanFragment : Fragment() {
         binding.btnPreviewSubmit.setOnClickListener {
             startTime = System.currentTimeMillis()
             if (viewModel.image.value != null) {
+                showLoading(true)
                 classifyImage(viewModel.image.value!!)
             }
+        }
+        binding.btnHelp.setOnClickListener {
+            help()
         }
     }
 
@@ -186,10 +192,24 @@ class ScanFragment : Fragment() {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.PREDICT_RESULT, predictResult)
             startActivity(intent)
+            showLoading(false)
         } else {
             Log.d("prediction", "Score hanya " + String.format("%.2f", confidenceScore) + "%")
             Toast.makeText(requireContext(), "Maaf, bukan spice!\n(Score: " + String.format("%.2f", confidenceScore) + "%)", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun help(){
+        val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+        val bottomSheetView = LayoutInflater.from(requireContext()).inflate(R.layout.item_help_bottomsheet,
+            requireActivity().findViewById<LinearLayout>(R.id.bottomSheet)
+        )
+        bottomSheetView.findViewById<View>(R.id.btn_close).setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
+
     }
 
     companion object {
@@ -197,6 +217,14 @@ class ScanFragment : Fragment() {
         const val CROP_RESULT = 101
         val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val REQUEST_CODE_PERMISSIONS = 10
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
 

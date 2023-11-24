@@ -83,27 +83,27 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="12dp"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/materialCardView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:cardCornerRadius="8dp"-->
+<!--                    app:cardElevation="12dp"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.5"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
 
-                    <androidx.appcompat.widget.SearchView
-                        android:id="@+id/searchView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:iconifiedByDefault="false"
-                        app:queryBackground="@android:color/transparent"
-                        app:queryHint="Search here ..." />
+<!--                    <androidx.appcompat.widget.SearchView-->
+<!--                        android:id="@+id/searchView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:iconifiedByDefault="false"-->
+<!--                        app:queryBackground="@android:color/transparent"-->
+<!--                        app:queryHint="Search here ..." />-->
 
-                </com.google.android.material.card.MaterialCardView>
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
 <!--                <EditText-->
 <!--                    android:id="@+id/editTextText"-->
@@ -158,16 +158,17 @@
                                 android:layout_margin="16dp"
                                 android:background="@drawable/background_oval2">
 
-                                <ImageView
+                                <androidx.appcompat.widget.AppCompatImageButton
                                     android:id="@+id/btnImgSpiceLib"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:src="@drawable/ic_lib"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-                                <!--                                    app:srcCompat="@drawable/favorites"-->
-                                />
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView

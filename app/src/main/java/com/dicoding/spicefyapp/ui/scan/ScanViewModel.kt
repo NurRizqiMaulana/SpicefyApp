@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ScanViewModel : ViewModel() {
-
     private val _image = MutableLiveData<Bitmap?>()
     val image: LiveData<Bitmap?> = _image
 

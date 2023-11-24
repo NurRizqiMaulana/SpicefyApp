@@ -1,5 +1,6 @@
 package com.dicoding.spicefyapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.spicefyapp.databinding.FragmentHomeBinding
 import com.dicoding.spicefyapp.model.FakeSpiceData
 import com.dicoding.spicefyapp.ui.adapter.SpiceListAdapter
+import com.dicoding.spicefyapp.ui.dashboard.spicelib.SpiceLibActivity
+import com.dicoding.spicefyapp.ui.dashboard.spiceloc.MapsActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
@@ -45,9 +48,17 @@ class HomeFragment : Fragment() {
             binding.tvUserHome.setText(user.email)
         }
 
+        binding.btnImgSpiceLib.setOnClickListener {
+            startActivity(Intent(requireContext(), SpiceLibActivity::class.java))
+        }
+        binding.btnImgSpiceLoc.setOnClickListener {
+            startActivity(Intent(requireContext(), MapsActivity::class.java))
+        }
+
         binding.rvTour.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvTour.setHasFixedSize(true)
         binding.rvTour.adapter = SpiceListAdapter(FakeSpiceData.spice)
+
     }
 
     override fun onDestroyView() {

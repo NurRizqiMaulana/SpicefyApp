@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.spicefyapp.databinding.ItemRowSpiceBinding
 import com.dicoding.spicefyapp.model.SpiceModel
 
-class SpiceListAdapter(private val listSpice: List<SpiceModel>) : RecyclerView.Adapter<SpiceListAdapter.SpiceViewHolder>() {
+class SpiceListAdapter(private var listSpice: List<SpiceModel>) : RecyclerView.Adapter<SpiceListAdapter.SpiceViewHolder>() {
     class SpiceViewHolder(binding: ItemRowSpiceBinding) : RecyclerView.ViewHolder(binding.root) {
 
         val imageSpice = binding.imgSpice
@@ -37,6 +37,12 @@ class SpiceListAdapter(private val listSpice: List<SpiceModel>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: SpiceViewHolder, position: Int) {
         holder.bind(listSpice[position])
+
+    }
+
+    fun searchDataList(searchList : List <SpiceModel>){
+        listSpice = searchList
+        notifyDataSetChanged()
 
     }
 

@@ -24,4 +24,10 @@
     <string name="detail_score_content">-</string>
     <string name="detail_description_title">Detail Spice</string>
     <string name="detail_description_content">-</string>
+    <string name="help_tittle">Cara Penggunaan</string>
+    <string name="kamera">Camera</string>
+    <string name="cam_help">-</string>
+    <string name="galeri">Gallery</string>
+    <string name="gallery_help">-</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
