@@ -9,8 +9,8 @@ import com.dicoding.spicefyapp.model.SpiceModel
 class SpicelibListAdapter(private var listSpiceLib: List<SpiceModel>) : RecyclerView.Adapter<SpicelibListAdapter.MyViewHolder>() {
     class MyViewHolder(binding: ItemRowSpicelibBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val imgSpice = binding.imgSpice
-        val tvSpice = binding.titleSpice
+        val imgSpice = binding.ivSpice
+        val tvSpice = binding.tvNameSpice
         fun bind (spice : SpiceModel){
             imgSpice.setImageResource(spice.picture)
             tvSpice.text = spice.name

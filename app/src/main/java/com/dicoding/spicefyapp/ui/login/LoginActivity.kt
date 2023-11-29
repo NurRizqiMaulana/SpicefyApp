@@ -21,11 +21,11 @@ class LoginActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        binding.btnSignIn.setOnClickListener {
+        binding.btnTvSignUp.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }
 
-        binding.siginButton.setOnClickListener {
+        binding.btnSigIn.setOnClickListener {
             var email = binding.edLoginEmail.text.toString()
             var password = binding.edLoginPassword.text.toString()
 

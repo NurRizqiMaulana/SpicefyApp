@@ -18,7 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpicefyApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.dashboard.spicemart.SpiceMartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.dashboard.spicelib.DetailSpiceLibActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

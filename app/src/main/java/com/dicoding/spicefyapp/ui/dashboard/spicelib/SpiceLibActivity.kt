@@ -21,11 +21,11 @@ class SpiceLibActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.rvSpiceLib.setHasFixedSize(true)
+        binding.rvSpiceLib.layoutManager = LinearLayoutManager(this)
         addDataToList()
         adapter = SpicelibListAdapter(mList)
-        binding.recyclerView.adapter = adapter
+        binding.rvSpiceLib.adapter = adapter
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -38,6 +38,10 @@ class SpiceLibActivity : AppCompatActivity() {
             }
 
         })
+
+//        binding.btnDetail.setOnClickListener {
+//            startActivity(Intent(this, DetailSpiceLibActivity::class.java))
+//        }
     }
 
     private fun addDataToList() {
@@ -60,4 +64,6 @@ class SpiceLibActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }

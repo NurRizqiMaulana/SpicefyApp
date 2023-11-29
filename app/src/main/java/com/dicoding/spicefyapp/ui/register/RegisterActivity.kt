@@ -18,13 +18,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnTvSignIn.setOnClickListener {
+        binding.btnTvSigin.setOnClickListener {
             startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
 
         auth = FirebaseAuth.getInstance()
-        binding.signupButton.setOnClickListener {
-            var email = binding.edRegisterEmail.text.toString()
+        binding.btnSignUp.setOnClickListener {
+            var email = binding.edRegisterName.text.toString()
             var password = binding.edRegisterPassword.text.toString()
 
             createAccount(email,password)

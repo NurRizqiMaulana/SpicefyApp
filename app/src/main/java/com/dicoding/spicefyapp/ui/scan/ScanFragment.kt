@@ -16,7 +16,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.dicoding.spicefyapp.R
-import com.dicoding.spicefyapp.ViewModelFactory
 import com.dicoding.spicefyapp.databinding.FragmentScanBinding
 import com.dicoding.spicefyapp.ml.FinalModel
 import com.dicoding.spicefyapp.model.PredictResponse
@@ -59,16 +58,13 @@ class ScanFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setListener()
         setupObserver()
+
 //        supportActionBar?.hide()
     }
 
@@ -92,14 +88,15 @@ class ScanFragment : Fragment() {
                 binding.btnPreviewSubmit.isEnabled = false
                 binding.btnPreviewSubmit.setBackgroundResource(R.drawable.bg_light_grey)
                 binding.btnAddRemovePhoto.text = resources.getString(R.string.add_photo)
-                binding.btnAddRemovePhoto.setBackgroundResource(R.drawable.bg_sapphire)
+                binding.btnAddRemovePhoto.setBackgroundResource(R.color.light_orange)
             }
         }
 
         binding.btnPreviewSubmit.setOnClickListener {
+            showLoading(true)
             startTime = System.currentTimeMillis()
             if (viewModel.image.value != null) {
-                showLoading(true)
+
                 classifyImage(viewModel.image.value!!)
             }
         }
@@ -109,6 +106,11 @@ class ScanFragment : Fragment() {
     }
 
     private fun setupObserver() {
+
+        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+            showLoading(isLoading)
+        }
+
         viewModel.image.observe(requireActivity()) {
             if (it != null) {
                 binding.ivImagePreview.setImageBitmap(it)
@@ -149,6 +151,9 @@ class ScanFragment : Fragment() {
 
     private fun classifyImage(image: Bitmap) {
         // Preprocess the image (rescaling)
+        viewModel.setLoading(true)
+
+
         val byteBuffer: ByteBuffer = ByteBuffer.allocateDirect(4 * 384 * 384 * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
         val intValues = IntArray(384 * 384)
@@ -164,7 +169,8 @@ class ScanFragment : Fragment() {
             }
         }
 
-        // Create batik model, prepare input, do classification and get the output
+
+        // Create spice model, prepare input, do classification and get the output
         val model = FinalModel.newInstance(requireContext())
         val input = TensorBuffer.createFixedSize(intArrayOf(1, 384, 384, 3), DataType.FLOAT32)
         input.loadBuffer(byteBuffer)
@@ -192,10 +198,11 @@ class ScanFragment : Fragment() {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.PREDICT_RESULT, predictResult)
             startActivity(intent)
-            showLoading(false)
+            viewModel.setLoading(false)
         } else {
             Log.d("prediction", "Score hanya " + String.format("%.2f", confidenceScore) + "%")
             Toast.makeText(requireContext(), "Maaf, bukan spice!\n(Score: " + String.format("%.2f", confidenceScore) + "%)", Toast.LENGTH_LONG).show()
+            viewModel.setLoading(false)
         }
     }
 
@@ -212,13 +219,6 @@ class ScanFragment : Fragment() {
 
     }
 
-    companion object {
-        const val CAMERA_X_RESULT = 200
-        const val CROP_RESULT = 101
-        val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-        const val REQUEST_CODE_PERMISSIONS = 10
-    }
-
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
@@ -227,5 +227,18 @@ class ScanFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+
+    companion object {
+        const val CAMERA_X_RESULT = 200
+        const val CROP_RESULT = 101
+        val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        const val REQUEST_CODE_PERMISSIONS = 10
+    }
 
 }

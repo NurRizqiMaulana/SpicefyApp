@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.spicefyapp.databinding.FragmentHomeBinding
 import com.dicoding.spicefyapp.model.FakeSpiceData
-import com.dicoding.spicefyapp.ui.adapter.SpiceListAdapter
+import com.dicoding.spicefyapp.ui.dashboard.adapter.SpicelibListAdapter
 import com.dicoding.spicefyapp.ui.dashboard.spicelib.SpiceLibActivity
 import com.dicoding.spicefyapp.ui.dashboard.spiceloc.MapsActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -55,9 +55,14 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), MapsActivity::class.java))
         }
 
-        binding.rvTour.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        binding.rvTour.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        binding.rvTour.setHasFixedSize(true)
+//        binding.rvTour.adapter = SpiceListAdapter(FakeSpiceData.spice)
+
         binding.rvTour.setHasFixedSize(true)
-        binding.rvTour.adapter = SpiceListAdapter(FakeSpiceData.spice)
+        binding.rvTour.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvTour.adapter = SpicelibListAdapter(FakeSpiceData.spice)
+
 
     }
 

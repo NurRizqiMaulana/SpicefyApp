@@ -42,7 +42,6 @@ class CameraActivity : AppCompatActivity() {
     private fun setupListener() {
         binding.btnCameraCapture.setOnClickListener { takePhoto() }
         binding.btnCameraGallery.setOnClickListener { openGallery() }
-
     }
 
     override fun onResume() {
@@ -91,6 +90,7 @@ class CameraActivity : AppCompatActivity() {
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
             val preview = Preview.Builder().build().also {
@@ -178,8 +178,5 @@ class CameraActivity : AppCompatActivity() {
         setResult(ScanFragment.CAMERA_X_RESULT, intent)
         finish()
     }
-
-
-
 
 }

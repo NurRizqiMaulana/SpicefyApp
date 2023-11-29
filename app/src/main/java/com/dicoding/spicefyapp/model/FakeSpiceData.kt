@@ -7,32 +7,37 @@ object FakeSpiceData {
         SpiceModel(
             1,
             "Andalin",
-            "",
-            R.drawable.andaliman
+            "Ini Adalah Andalin",
+            R.drawable.andaliman,
+            -7.453535, 109.301625
         ),
         SpiceModel(
             2,
             "Cabe Jawa",
-            "",
-            R.drawable.cabejawa
+            "Ini Adalah Cabe Jawa",
+            R.drawable.cabejawa,
+            -7.183839, 107.887135
         ),
         SpiceModel(
             3,
             "Cengkeh",
-            "",
-            R.drawable.cengkeh
+            "Ini Adalah Cengkeh",
+            R.drawable.cengkeh,
+            -7.720343, 109.916859
         ),
         SpiceModel(
             4,
             "Kapu Laga",
-            "",
-            R.drawable.kapulaga
+            "Ini Adalah Kapu laga",
+            R.drawable.kapulaga,
+            -7.358206, 110.213490
         ),
         SpiceModel(
             5,
             "Kayu Manis",
-            "",
-            R.drawable.kayumanis
+            "Ini Adalah Kayu Manis",
+            R.drawable.kayumanis,
+            -7.047998, 109.133764
         )
 
     )

@@ -5,4 +5,6 @@ data class SpiceModel (
     val name: String,
     val description: String,
     val picture: Int,
+    val lat: Double,
+    val lot: Double
 )

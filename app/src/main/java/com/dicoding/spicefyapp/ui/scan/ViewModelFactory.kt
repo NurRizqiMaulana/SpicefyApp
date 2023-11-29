@@ -1,9 +1,8 @@
-package com.dicoding.spicefyapp
+package com.dicoding.spicefyapp.ui.scan
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.spicefyapp.ui.scan.ScanViewModel
 
 class ViewModelFactory private constructor() :
     ViewModelProvider.Factory {
