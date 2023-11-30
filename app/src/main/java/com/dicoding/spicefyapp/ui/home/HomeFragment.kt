@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.spicefyapp.databinding.FragmentHomeBinding
 import com.dicoding.spicefyapp.data.model.FakeSpiceData
+import com.dicoding.spicefyapp.databinding.FragmentHomeBinding
 import com.dicoding.spicefyapp.ui.dashboard.adapter.SpicelibListAdapter
 import com.dicoding.spicefyapp.ui.dashboard.spicelib.SpiceLibActivity
 import com.dicoding.spicefyapp.ui.dashboard.spiceloc.MapsActivity
+import com.dicoding.spicefyapp.ui.dashboard.spicemart.SpiceMartActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
@@ -53,6 +54,10 @@ class HomeFragment : Fragment() {
         }
         binding.btnImgSpiceLoc.setOnClickListener {
             startActivity(Intent(requireContext(), MapsActivity::class.java))
+        }
+
+        binding.btnImgSpiceMart.setOnClickListener {
+            startActivity(Intent(requireContext(), SpiceMartActivity::class.java))
         }
 
 //        binding.rvTour.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
