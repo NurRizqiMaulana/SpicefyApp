@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.spicefyapp.databinding.ItemRowSpiceBinding
-import com.dicoding.spicefyapp.model.SpiceModel
+import com.dicoding.spicefyapp.data.model.SpiceModel
 
 class SpiceListAdapter(private var listSpice: List<SpiceModel>) : RecyclerView.Adapter<SpiceListAdapter.SpiceViewHolder>() {
     class SpiceViewHolder(binding: ItemRowSpiceBinding) : RecyclerView.ViewHolder(binding.root) {

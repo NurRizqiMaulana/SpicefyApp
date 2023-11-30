@@ -1,10 +1,10 @@
-package com.dicoding.spicefyapp.ui.detail
+package com.dicoding.spicefyapp.ui.scan.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.spicefyapp.databinding.ActivityDetailBinding
-import com.dicoding.spicefyapp.model.PredictResponse
+import com.dicoding.spicefyapp.data.model.PredictResponse
 
 class DetailActivity : AppCompatActivity() {
 
@@ -20,7 +20,9 @@ class DetailActivity : AppCompatActivity() {
 
         val predictResult = intent.getParcelableExtra<PredictResponse>(PREDICT_RESULT) as PredictResponse
 
-        detailViewModel = ViewModelProvider(this, DetailViewModelFactory.getInstance(application))[DetailViewModel::class.java]
+        detailViewModel = ViewModelProvider(this,
+            DetailViewModelFactory.getInstance(application)
+        )[DetailViewModel::class.java]
         detailViewModel.getBatikRandom(predictResult.id).observe(this) {
             if (it != null) {
                 binding.ivDetailImage.setImageBitmap(predictResult.image)

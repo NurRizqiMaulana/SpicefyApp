@@ -1,9 +1,9 @@
-package com.dicoding.spicefyapp.ui.detail
+package com.dicoding.spicefyapp.ui.scan.detail
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dicoding.spicefyapp.repository.SpiceRepository
+import com.dicoding.spicefyapp.data.repository.SpiceRepository
 
 class DetailViewModelFactory private constructor(private val repository: SpiceRepository) :
     ViewModelProvider.Factory {

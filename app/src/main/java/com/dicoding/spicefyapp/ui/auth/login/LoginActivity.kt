@@ -1,4 +1,4 @@
-package com.dicoding.spicefyapp.ui.login
+package com.dicoding.spicefyapp.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.spicefyapp.MainActivity
 import com.dicoding.spicefyapp.databinding.ActivityLoginBinding
-import com.dicoding.spicefyapp.ui.register.RegisterActivity
+import com.dicoding.spicefyapp.ui.auth.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

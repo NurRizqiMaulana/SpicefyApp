@@ -18,10 +18,10 @@ import androidx.fragment.app.viewModels
 import com.dicoding.spicefyapp.R
 import com.dicoding.spicefyapp.databinding.FragmentScanBinding
 import com.dicoding.spicefyapp.ml.FinalModel
-import com.dicoding.spicefyapp.model.PredictResponse
+import com.dicoding.spicefyapp.data.model.PredictResponse
 import com.dicoding.spicefyapp.ui.camera.CameraActivity
 import com.dicoding.spicefyapp.ui.camera.CropImageActivity
-import com.dicoding.spicefyapp.ui.detail.DetailActivity
+import com.dicoding.spicefyapp.ui.scan.detail.DetailActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer

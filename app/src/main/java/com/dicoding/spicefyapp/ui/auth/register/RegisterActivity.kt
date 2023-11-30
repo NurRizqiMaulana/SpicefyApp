@@ -1,4 +1,4 @@
-package com.dicoding.spicefyapp.ui.register
+package com.dicoding.spicefyapp.ui.auth.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.spicefyapp.databinding.ActivityRegisterBinding
-import com.dicoding.spicefyapp.ui.login.LoginActivity
+import com.dicoding.spicefyapp.ui.auth.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Intent(this@RegisterActivity, LoginActivity::class.java).also {intent ->
+                    Intent(this@RegisterActivity, LoginActivity::class.java).also { intent ->
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     }

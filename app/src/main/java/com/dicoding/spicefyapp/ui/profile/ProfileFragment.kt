@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.spicefyapp.databinding.FragmentProfileBinding
-import com.dicoding.spicefyapp.ui.login.LoginActivity
+import com.dicoding.spicefyapp.ui.auth.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {

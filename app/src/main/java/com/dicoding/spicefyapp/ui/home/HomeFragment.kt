@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.spicefyapp.databinding.FragmentHomeBinding
-import com.dicoding.spicefyapp.model.FakeSpiceData
+import com.dicoding.spicefyapp.data.model.FakeSpiceData
 import com.dicoding.spicefyapp.ui.dashboard.adapter.SpicelibListAdapter
 import com.dicoding.spicefyapp.ui.dashboard.spicelib.SpiceLibActivity
 import com.dicoding.spicefyapp.ui.dashboard.spiceloc.MapsActivity

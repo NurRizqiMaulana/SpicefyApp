@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.dicoding.spicefyapp.R
 import com.dicoding.spicefyapp.databinding.ActivityMapsBinding
-import com.dicoding.spicefyapp.model.FakeSpiceData
-import com.dicoding.spicefyapp.model.SpiceModel
+import com.dicoding.spicefyapp.data.model.FakeSpiceData
+import com.dicoding.spicefyapp.data.model.SpiceModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment

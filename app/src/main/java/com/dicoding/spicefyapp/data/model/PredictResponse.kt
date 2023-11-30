@@ -1,4 +1,4 @@
-package com.dicoding.spicefyapp.model
+package com.dicoding.spicefyapp.data.model
 
 import android.graphics.Bitmap
 import android.os.Parcelable

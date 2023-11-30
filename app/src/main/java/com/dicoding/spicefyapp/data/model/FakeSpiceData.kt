@@ -1,4 +1,4 @@
-package com.dicoding.spicefyapp.model
+package com.dicoding.spicefyapp.data.model
 
 import com.dicoding.spicefyapp.R
 

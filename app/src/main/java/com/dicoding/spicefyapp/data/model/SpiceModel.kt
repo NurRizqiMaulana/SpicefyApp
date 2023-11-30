@@ -1,4 +1,4 @@
-package com.dicoding.spicefyapp.model
+package com.dicoding.spicefyapp.data.model
 
 data class SpiceModel (
     val id: Int,

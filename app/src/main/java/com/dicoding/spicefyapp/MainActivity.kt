@@ -1,5 +1,6 @@
 package com.dicoding.spicefyapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -7,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dicoding.spicefyapp.databinding.ActivityMainBinding
+import com.dicoding.spicefyapp.ui.chatbot.ChatbotActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -33,5 +35,20 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            // Cek apakah halaman saat ini adalah halaman utama
+            if (destination.id == R.id.navigation_home) {
+                // Tampilkan FAB jika halaman utama
+                binding.btnFabChat.show()
+            } else {
+                // Sembunyikan FAB jika bukan halaman utama
+                binding.btnFabChat.hide()
+            }
+        }
+
+        binding.btnFabChat.setOnClickListener {
+            startActivity(Intent(this, ChatbotActivity::class.java))
+        }
     }
 }

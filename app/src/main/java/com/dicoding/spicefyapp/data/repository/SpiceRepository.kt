@@ -1,4 +1,4 @@
-package com.dicoding.spicefyapp.repository
+package com.dicoding.spicefyapp.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData

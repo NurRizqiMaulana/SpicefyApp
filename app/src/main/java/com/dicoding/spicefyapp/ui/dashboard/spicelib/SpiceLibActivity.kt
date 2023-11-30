@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.spicefyapp.databinding.ActivitySpiceLibBinding
-import com.dicoding.spicefyapp.model.FakeSpiceData
-import com.dicoding.spicefyapp.model.SpiceModel
+import com.dicoding.spicefyapp.data.model.FakeSpiceData
+import com.dicoding.spicefyapp.data.model.SpiceModel
 import com.dicoding.spicefyapp.ui.dashboard.adapter.SpicelibListAdapter
 import java.util.Locale
 
