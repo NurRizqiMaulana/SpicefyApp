@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }
 
-        binding.btnSigIn.setOnClickListener {
+        binding.btnSignIn.setOnClickListener {
             var email = binding.edLoginEmail.text.toString()
             var password = binding.edLoginPassword.text.toString()
 

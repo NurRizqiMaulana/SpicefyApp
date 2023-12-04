@@ -40,6 +40,27 @@
         app:layout_constraintStart_toEndOf="@+id/gl_camera_start"
         app:layout_constraintEnd_toStartOf="@+id/gl_camera_end"/>
 
+    <ImageView
+        android:id="@+id/btn_camera_capture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_camera"/>
+
+    <ImageView
+        android:id="@+id/btn_camera_gallery"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_camera_capture"
+        app:srcCompat="@drawable/ic_gallery"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_camera_footer"
         android:layout_width="match_parent"
@@ -48,34 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_camera_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp">
 
-            <ImageView
-                android:id="@+id/btn_camera_capture"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_camera"/>
-
-            <ImageView
-                android:id="@+id/btn_camera_gallery"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_camera_capture"
-                app:srcCompat="@drawable/ic_gallery"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

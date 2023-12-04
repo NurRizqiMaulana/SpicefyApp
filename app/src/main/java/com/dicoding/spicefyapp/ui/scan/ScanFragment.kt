@@ -16,9 +16,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.dicoding.spicefyapp.R
+import com.dicoding.spicefyapp.data.model.PredictResponse
 import com.dicoding.spicefyapp.databinding.FragmentScanBinding
 import com.dicoding.spicefyapp.ml.FinalModel
-import com.dicoding.spicefyapp.data.model.PredictResponse
 import com.dicoding.spicefyapp.ui.camera.CameraActivity
 import com.dicoding.spicefyapp.ui.camera.CropImageActivity
 import com.dicoding.spicefyapp.ui.scan.detail.DetailActivity
@@ -34,11 +34,9 @@ class ScanFragment : Fragment() {
     private val viewModel by viewModels<ScanViewModel> {
         ViewModelFactory.getInstance(requireActivity())
     }
+    private var isClassifying = false
     var startTime: Long = 0
     var endTime: Long = 0
-
-
-//    private lateinit var viewModel: ScanViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -49,10 +47,6 @@ class ScanFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-//        val dashboardViewModel = ViewModelProvider(this).get(ScanViewModel::class.java)
-//        viewModel = ViewModelProvider(this, ViewModelFactory.getInstance(application))[ScanViewModel::class.java]
-
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -81,22 +75,21 @@ class ScanFragment : Fragment() {
         viewModel.image.observe(requireActivity()) {
             if (it != null) {
                 binding.btnPreviewSubmit.isEnabled = true
-                binding.btnPreviewSubmit.setBackgroundResource(R.drawable.bg_sapphire)
+                binding.btnPreviewSubmit.setBackgroundResource(R.drawable.bg_btn)
                 binding.btnAddRemovePhoto.text = resources.getString(R.string.remove_photo)
                 binding.btnAddRemovePhoto.setBackgroundResource(R.drawable.bg_light_red)
             } else {
                 binding.btnPreviewSubmit.isEnabled = false
                 binding.btnPreviewSubmit.setBackgroundResource(R.drawable.bg_light_grey)
                 binding.btnAddRemovePhoto.text = resources.getString(R.string.add_photo)
-                binding.btnAddRemovePhoto.setBackgroundResource(R.color.light_orange)
+                binding.btnAddRemovePhoto.setBackgroundResource(R.drawable.bg_btn)
             }
         }
 
         binding.btnPreviewSubmit.setOnClickListener {
-            showLoading(true)
             startTime = System.currentTimeMillis()
             if (viewModel.image.value != null) {
-
+                showLoading(true)
                 classifyImage(viewModel.image.value!!)
             }
         }
@@ -107,9 +100,9 @@ class ScanFragment : Fragment() {
 
     private fun setupObserver() {
 
-        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            showLoading(isLoading)
-        }
+//        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+//            showLoading(isLoading)
+//        }
 
         viewModel.image.observe(requireActivity()) {
             if (it != null) {
@@ -151,9 +144,7 @@ class ScanFragment : Fragment() {
 
     private fun classifyImage(image: Bitmap) {
         // Preprocess the image (rescaling)
-        viewModel.setLoading(true)
-
-
+        showLoading(true)
         val byteBuffer: ByteBuffer = ByteBuffer.allocateDirect(4 * 384 * 384 * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
         val intValues = IntArray(384 * 384)
@@ -168,8 +159,6 @@ class ScanFragment : Fragment() {
                 byteBuffer.putFloat((`val` and 0xFF) * (1f / 255))
             }
         }
-
-
         // Create spice model, prepare input, do classification and get the output
         val model = FinalModel.newInstance(requireContext())
         val input = TensorBuffer.createFixedSize(intArrayOf(1, 384, 384, 3), DataType.FLOAT32)
@@ -191,6 +180,7 @@ class ScanFragment : Fragment() {
         }
         val confidenceScore = bestConfidenceScore * 100
         if (confidenceScore >= 70.0F) {
+            showLoading(false)
             endTime = System.currentTimeMillis()
             Log.d("test_duration", (endTime - startTime).toString() + "ms")
 
@@ -198,11 +188,9 @@ class ScanFragment : Fragment() {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.PREDICT_RESULT, predictResult)
             startActivity(intent)
-            viewModel.setLoading(false)
         } else {
             Log.d("prediction", "Score hanya " + String.format("%.2f", confidenceScore) + "%")
             Toast.makeText(requireContext(), "Maaf, bukan spice!\n(Score: " + String.format("%.2f", confidenceScore) + "%)", Toast.LENGTH_LONG).show()
-            viewModel.setLoading(false)
         }
     }
 
@@ -220,11 +208,8 @@ class ScanFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+        isClassifying = isLoading
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
