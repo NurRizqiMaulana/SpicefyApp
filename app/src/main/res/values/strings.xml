@@ -13,7 +13,7 @@
     <string name="name">Name</string>
     <string name="preview_title">Gambar Spice</string>
     <string name="preview_subtitle">Capture Your Spice In Here</string>
-    <string name="batik_image">Gambar Spice</string>
+    <string name="spice_image">Gambar Spice</string>
     <string name="no_picture">Tidak ada gambar</string>
     <string name="add_photo">Tambah Gambar</string>
     <string name="process">Proses Gambar</string>
@@ -24,7 +24,7 @@
     <string name="detail_score_content">-</string>
     <string name="detail_description_title">Detail Spice</string>
     <string name="detail_description_content">-</string>
-    <string name="help_tittle">Cara Penggunaan</string>
+    <string name="help_tittle">Cara Penggunaan\nSelamat datang di halaman bantuan penggunaan aplikasi deteksi gambar! Aplikasi ini dirancang untuk memberikan pengalaman yang mudah dan intuitif dalam mendeteksi gambar menggunakan dua metode: melalui kamera dan dari galeri. Berikut adalah panduan langkah demi langkah untuk membantu Anda memahami cara menggunakan kedua fitur tersebut.</string>
     <string name="kamera">Camera</string>
     <string name="cam_help">-</string>
     <string name="galeri">Gallery</string>

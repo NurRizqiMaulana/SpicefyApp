@@ -23,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         auth = FirebaseAuth.getInstance()
+
         binding.btnSignUp.setOnClickListener {
             var email = binding.edRegisterName.text.toString()
             var password = binding.edRegisterPassword.text.toString()

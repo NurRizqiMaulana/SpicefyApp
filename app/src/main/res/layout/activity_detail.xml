@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/batik_image"
+                android:contentDescription="@string/spice_image"
                 android:scaleType="centerCrop"
                 tools:src="@tools:sample/avatars" />
 

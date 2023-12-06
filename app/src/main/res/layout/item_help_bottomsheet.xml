@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:text="@string/help_tittle"
         android:textAlignment="center"
-
         android:textSize="18sp"
         android:textColor="@color/black"
         android:textStyle="bold"/>

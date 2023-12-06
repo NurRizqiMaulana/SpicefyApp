@@ -29,7 +29,19 @@ class LoginActivity : AppCompatActivity() {
             var email = binding.edLoginEmail.text.toString()
             var password = binding.edLoginPassword.text.toString()
 
-            signIn(email,password)
+            if (email.isEmpty()) {
+                // Menampilkan pesan kesalahan jika email kosong
+                Toast.makeText(this, "Email harus diisi", Toast.LENGTH_SHORT).show()
+                binding.edLoginEmail.requestFocus()
+            } else if (password.isEmpty()) {
+                // Melakukan validasi jika password kosong
+                // Menampilkan pesan kesalahan jika password kosong
+                Toast.makeText(this, "Password harus diisi", Toast.LENGTH_SHORT).show()
+                binding.edLoginPassword.requestFocus()
+            } else {
+                // Jika tidak ada input yang kosong, panggil fungsi signIn()
+                signIn(email, password)
+            }
         }
     }
     private fun signIn(email: String, password: String) {
